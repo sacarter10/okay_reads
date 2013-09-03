@@ -34,3 +34,6 @@ gem 'ejs'
 # To use debugger
 gem 'debugger'
 
+gem 'figaro'
+gem 'addressable'
+gem 'rest-client'

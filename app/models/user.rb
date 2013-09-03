@@ -1,4 +1,5 @@
 require 'bcrypt'
+require 'rest-client'
 
 class User < ActiveRecord::Base
   include BCrypt
