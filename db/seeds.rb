@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# csv_text = File.read('../top100books2012.csv')
+# csv = CSV.parse(csv_text, :headers => true)
+# csv.each do |row|
+#   row = row.to_hash
+#   Book.create(:title => row["Title"], :author => row["Author"], :genre => row["Genre"])
+# end
+

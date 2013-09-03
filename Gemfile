@@ -26,15 +26,11 @@ gem 'oj'
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
+# for pagination
+gem 'kaminari'
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
+gem 'ejs'
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'
 
