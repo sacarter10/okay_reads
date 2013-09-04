@@ -1,13 +1,19 @@
-Books Index
+<h3>Books Index</h3>
 
 <% _.each(books.page(page), function (book) { %>
   <%= book.escape('title') %><br>
 <% }); %>
 
-//display books in the current range
+<% if (books.prevPage()) { %>
+  <a href="<%=path%><%=books.prevPage()%>">Prev</a>
+<% }; %>
 
-<% for (var  i = 0; i < books.totalPages; i++) { %>
-	<a href="#<%=i%>"><%=i%></a>
+<!-- <% for (var  i = 1; i <= books.totalPages(); i++) { %>
+    <a href="<%=path%><%=i%>"><%=i%></a>
+<% } %> -->
 
-<% } %>
+<% if (books.nextPage()) { %>
+    <a href="<%=path%><%=books.nextPage()%>">Next</a>
+<% }; %>
+
 
