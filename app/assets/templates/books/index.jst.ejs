@@ -1,5 +1,13 @@
 Books Index
 
-<% books.each(function (book) { %>
+<% _.each(books.page(page), function (book) { %>
   <%= book.escape('title') %><br>
 <% }); %>
+
+//display books in the current range
+
+<% for (var  i = 0; i < books.totalPages; i++) { %>
+	<a href="#<%=i%>"><%=i%></a>
+
+<% } %>
+

@@ -1,7 +1,8 @@
 Goodreadsclone.Routers.Books = Backbone.Router.extend({
 
 	routes: {
-		"": "allBooks"
+		"/:page": "allBooks",
+		"/genre/:page": "genreIndex"
 	},
 
 	initialize: function (options) {
@@ -10,8 +11,11 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 		this.sidebar = options.sidebar;
 	},
 
-	allBooks: function () {
-		var view = new Goodreadsclone.Views.BooksIndex({ collection: this.collection });
+	allBooks: function (page) {
+		page = page || 1;
+		this.collection.currentPage = page;
+
+		var view = new Goodreadsclone.Views.BooksIndex({ collection: this.collection, page: page });
 		$('#content').html(view.render().$el);
 	}
 
