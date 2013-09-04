@@ -4,15 +4,18 @@ window.Goodreadsclone = {
   Views: {},
   Routers: {},
   initialize: function() {
-		console.log($('#bootstrapped_books').html());
-		var book_data = JSON.parse($('#bootstrapped_books').html());
-		var books = Goodreadsclone.Collections.Books(book_data);
-    Goodreadsclone.Routers.Books.new({
-			collection: books,
-			sidebar: $('#sidebar'),
-			rootEl: $('#rootEl')
+		var books = new Goodreadsclone.Collections.Books();
+		books.fetch({
+			success: function () {
+				console.log("fetch successful")
+		    new Goodreadsclone.Routers.Books ({
+					collection: books,
+					sidebar: $('#sidebar'),
+					rootEl: $('#content')
+				});
+				Backbone.history.start();
+			}
 		});
-		Backbone.history.start();
   }
 };
 
