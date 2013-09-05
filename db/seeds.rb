@@ -27,7 +27,7 @@ SUBJECTS.each do |subject|
     :scheme => "http",
     :host => "openlibrary.org",
     :path => "/subjects/#{subject}.json",
-    :query_values => {:limit => 400}
+    :query_values => {:limit => 4}
   ).to_s
 
   response = JSON.parse(RestClient.get(url))

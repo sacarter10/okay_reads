@@ -1,7 +1,7 @@
 <h3>Books Index</h3>
 
 <% _.each(books.page(page), function (book) { %>
-  <%= book.escape('title') %><br>
+  <a href = "#books/<%= book.escape('id')%>"><%= book.escape('title') %></a><br>
 <% }); %>
 
 <% if (books.prevPage()) { %>

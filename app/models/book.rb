@@ -5,6 +5,8 @@ class Book < ActiveRecord::Base
 
   validates :author, :title, :presence => true
   validates :title, :uniqueness => {:case_sensitive => false}
+  
+  has_many :ratings
 end
 
 

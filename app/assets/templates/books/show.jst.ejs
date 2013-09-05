@@ -1,3 +1,14 @@
+<img src="http://covers.openlibrary.org/b/OLID/<%=book.get('open_library_id')%>-M.jpg">
 <h2><%= book.escape('title') %></h2>
 by <%= book.escape('author') %>
 <%= book.escape('genre') %>
+<br>
+<div class="stars">
+  <span id="1">&#9733</span> <!-- black star -->
+  <span id="2">&#9734</span> <!-- white star -->
+  <span id="3">&#9734</span>
+  <span id="4">&#9734</span>
+  <span id="5">&#9734</span>
+</div>
+
+
