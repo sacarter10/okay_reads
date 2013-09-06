@@ -4,5 +4,6 @@ Goodreadsclone::Application.routes.draw do
   resources :books, :only => [:index, :show]
   resources :ratings, :only => [:create, :update] #should this be nested under books?
   resources :reviews, :only => [:create, :update]
-  root :to => "root#root"
+  get "/root", :to => "root#root"
+  root :to => "sessions#new"
 end

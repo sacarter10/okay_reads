@@ -1,9 +1,12 @@
-<form id="create-review">
-  <label for="review_title">Title:</label>
-  <input type="text" name="review[title]" id="review_title">
+<div class="review-form">
+  <form id="create-review">
+    <label for="review_title">Title:</label>
+    <input type="text" name="review[title]" id="review_title"><br>
 
-  <label for="review_text">Write your review here</label>
-  <textarea name="review[body]" id="review_text"></textarea>
+    <label for="review_text">Write your review here</label>
+    <textarea name="review[body]" id="review_text"></textarea><br>
 
-  <input type="submit" value="Submit Review">
-</form>
+    <%= JST['ratings/show']({ label: "reviewStars" }) %><br>
+    <input type="submit" value="Submit Review">
+  </form>
+</div>

@@ -1,4 +1,8 @@
-<% book.get('reviews').each( function (review) { %>
-  <%= review.escape('title') %><br>
+Reviews
+<% reviews.each( function (review) { %>
+  <h5><%= review.escape('title') %></h5>
   <%= review.escape('body') %>
 <% }); %>
+<form id="new-review">
+  <input type="submit" value="Write a review">
+</form>

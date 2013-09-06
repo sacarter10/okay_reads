@@ -1,17 +1,15 @@
 <img src="http://covers.openlibrary.org/b/OLID/<%=book.get('open_library_id')%>-M.jpg">
 <h2><%= book.escape('title') %></h2>
-by <%= book.escape('author') %>
-<%= book.escape('genre') %>
+by <%= book.escape('author') %><br>
+Genre: <%= book.escape('genre') %><br>
 
-<%= JST['ratings/show']({book: book}) %>
-
-<% console.log(book) %>
-<form id="new-review">
-  <input type="submit" value="Write a review">
-</form>
+Your rating:
+<%= JST['ratings/show']({ label: "currentStars" }) %>
+<div class="average-rating">
+  Average rating: <%= book.get('average_rating') %>
+</div>
 
 <div class="reviews">
-  <h4>Reviews</h4>
-  <%= JST['reviews/index']({book: book}) %>
+
 </div>
 

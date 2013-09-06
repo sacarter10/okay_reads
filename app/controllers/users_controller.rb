@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:token] = @user.session_token
-      redirect_to books_url
+      redirect_to "/root"
     else
       flash[:errors] ||= @user.errors.full_messages
       render :new
