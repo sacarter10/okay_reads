@@ -2,34 +2,15 @@
 <h2><%= book.escape('title') %></h2>
 by <%= book.escape('author') %>
 <%= book.escape('genre') %>
-<br>
-<div class="stars">
-  <span id="star1" class="unfilled">
-    <span class="dark">&#9733</span> <!-- black star -->
-    <span class="light">&#9734</span> <!-- white star -->
-  </span>
-  <span id="star2" class="unfilled">
-    <span class="dark">&#9733</span>
-    <span class="light">&#9734</span>
-  </span>
-  <span id="star3" class="unfilled">
-    <span class="dark">&#9733</span>
-    <span class="light">&#9734</span>
-  </span>
-  <span id="star4" class="unfilled">
-    <span class="dark">&#9733</span>
-    <span class="light">&#9734</span>
-  </span>
-  <span id="star5" class="unfilled">
-    <span class="dark">&#9733</span>
-    <span class="light">&#9734</span>
-  </span>
-</div>
 
-<script>
-  for (var i = 1; i <= currentUsersRating; i++) {
-	  $('#star' + i).removeClass('unfilled');
-	  $('#star' + i).addClass('filled');
-  }
-</script>
+<%= JST['ratings/show']({book: book}) %>
+
+<form id="new-review">
+  <input type="button" value="Write a review">
+</form>
+
+<div class="reviews">
+  <h4>Reviews</h4>
+  <%= JST['reviews/index']({book: book}) %>
+</div>
 

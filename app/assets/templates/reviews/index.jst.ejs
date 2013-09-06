@@ -1,0 +1,4 @@
+<% book.get('reviews').each( function (review) { %>
+  <%= review.escape('title') %><br>
+  <%= review.escape('body') %>
+<% }); %>
