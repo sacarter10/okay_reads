@@ -12,10 +12,10 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 		this.sidebar = options.sidebar;
 		this.genres = options.genres;
 
-		this._installSidebar();
+		this._addSidebar();
 	},
 
-	_installSidebar: function () {
+	_addSidebar: function () {
 		var sidebarView = new Goodreadsclone.Views.BooksSidebar({
 			genres: this.genres
 		});
@@ -26,6 +26,7 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 	booksPage: function (page) {
 		var page = page || 1;
 		this.collection.currentPage = page;
+		this.collection.fetch({replace: false, data: page})
 
 		var pageView = new Goodreadsclone.Views.BooksIndex({
 			collection: this.collection

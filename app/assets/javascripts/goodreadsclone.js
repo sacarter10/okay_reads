@@ -9,6 +9,8 @@ window.Goodreadsclone = {
 
 		var books = new Goodreadsclone.Collections.Books();
 		books.fetch({
+			data: { page: 1 },
+			remove: false,
 			success: function () {
 		    new Goodreadsclone.Routers.Books ({
 					collection: books,

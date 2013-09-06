@@ -5,8 +5,9 @@ by <%= book.escape('author') %>
 
 <%= JST['ratings/show']({book: book}) %>
 
+<% console.log(book) %>
 <form id="new-review">
-  <input type="button" value="Write a review">
+  <input type="submit" value="Write a review">
 </form>
 
 <div class="reviews">

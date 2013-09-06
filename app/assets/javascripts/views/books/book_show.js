@@ -4,24 +4,34 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 
 	events: {
 		"click .stars": "makeRating",
-		"submit #new-review": "newReview"
+		"submit #new-review": "newReview",
+		"submit #create-review": "createReview"
+	},
+
+	createReview: function (event) {
+		event.preventDefault();
+
+		var reviewData = $(event.currentTarget).serializeJSON();
+		reviewData.review.book_id = this.model.get('id');
+
+		this.model.get('reviews').create(reviewData, {
+			wait: true,
+			success: function (rating, response, options) {
+				console.log("saved successfully");
+			},
+			error: function (rating, xhr, options) {
+				console.log("error");
+			}
+		});
 	},
 
 	newReview: function (event) {
-		// this.model.get('reviews').create({
-// 			stars: $(event.target).parent().attr('id').slice(-1), //id is in format "star1"
-// 			book_id: that.model.get('id')
-// 		}, {
-// 			wait: true,
-// 			success: function (rating, response, options) {
-// 				console.log("saved successfully");
-// 			},
-// 			error: function (rating, xhr, options) {
-// 				console.log(xhr);
-// 			}
+		debugger
+		this.$el.append(JST['reviews/new']());
 	},
 
 	makeRating: function (event) {
+		event.preventDefault();
 		var that = this;
 
 		existingRating = this.model.get('ratings').findWhere({
@@ -60,6 +70,8 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 		this.listenTo(this.model, 'change', this.render);
 		this.listenTo(this.model.get('ratings'), 'change', this.render);
 		this.listenTo(this.model.get('ratings'), 'add', this.render);
+		this.listenTo(this.model.get('reviews'), 'change', this.render);
+		this.listenTo(this.model.get('reviews'), 'add', this.render);
 	},
 
 	render: function () {

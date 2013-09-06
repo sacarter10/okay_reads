@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   def create
     @review = Review.new(params[:review])
-    @review.user_id = current_user
+    @review.user_id = current_user.id
 
     if @review.save
       render :json => @review

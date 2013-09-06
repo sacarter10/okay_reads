@@ -35,8 +35,11 @@ Goodreadsclone.Collections.Books = Backbone.Collection.extend({
 		return this.slice(start, end);
 	},
 
-	totalPages: function () {
-		return (Math.ceil(this.length / this.elemsPerPage));
+	parse: function (data) {
+		this.currentPage = data.current_page;
+		this.totalPages = data.total_pages;
+
+		return data.models;
 	}
 
 });

@@ -1,5 +1,6 @@
 Goodreadsclone.Collections.Reviews = Backbone.Collection.extend({
 
-  model: Goodreadsclone.Models.Review
+  model: Goodreadsclone.Models.Review,
+	url: "/reviews"
 
 });
