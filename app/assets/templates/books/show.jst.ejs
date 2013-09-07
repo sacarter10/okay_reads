@@ -4,7 +4,7 @@ by <%= book.escape('author') %><br>
 Genre: <%= book.escape('genre') %><br>
 
 Your rating:
-<%= JST['ratings/show']({ label: "currentStars" }) %>
+<div class="currentRating"></div>
 <div class="average-rating">
   Average rating: <%= book.get('average_rating') %>
 </div>
