@@ -21,8 +21,11 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 			currentRating = 0;
 		}
 
+		var ratingView = new Goodreadsclone.Views.RatingShow({ rating: currentRating });
+		this.$el.find('#currentRating').html(ratingView.render().$el);
+
 		var reviewsView = new Goodreadsclone.Views.ReviewsIndex({ collection: this.model.get('reviews') });
-		this.$el.find('.reviews').html(reviewsView.render().$el);
+		this.$el.find('#reviews').html(reviewsView.render().$el);
 
 		return this;
 	}

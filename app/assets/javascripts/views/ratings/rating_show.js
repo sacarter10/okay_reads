@@ -2,11 +2,10 @@ Goodreadsclone.Views.RatingShow = Backbone.View.extend({
 	template: JST['ratings/show'],
 
 	events: {
-		"click #currentStars": "makeRating"
+		"click .stars": "makeRating"
 	},
 
 	makeRating: function (event) {
-		event.preventDefault();
 		var that = this;
 
 		existingReview = this.model.get('reviews').findWhere({
@@ -42,9 +41,13 @@ Goodreadsclone.Views.RatingShow = Backbone.View.extend({
 	},
 
 	render: function () {
-	  for (var i = 1; i <= currentRating; i++) {
-		  this.$el.find('#currentStars #star' + i).removeClass('unfilled');
-		  this.$el.find('#currentStars #star' + i).addClass('filled');
+		this.$el.html(this.template());
+
+	  for (var i = 1; i <= this.options.rating; i++) {
+		  this.$el.find('#star' + i).removeClass('unfilled');
+		  this.$el.find('#star' + i).addClass('filled');
 	  }
+
+	  return this;
 	}
 });

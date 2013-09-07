@@ -1,7 +1,6 @@
 Reviews
 <% reviews.each( function (review) { %>
-  <h5><%= review.escape('title') %></h5>
-  <%= review.escape('body') %>
+	<span id="review-show"></span>
 <% }); %>
 <form id="new-review">
   <input type="submit" value="Write a review">
