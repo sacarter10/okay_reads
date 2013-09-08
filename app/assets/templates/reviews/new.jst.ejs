@@ -6,7 +6,7 @@
     <label for="review_text">Write your review here</label>
     <textarea name="review[body]" id="review_text"></textarea><br>
 
-    <%= JST['ratings/show']({ label: "reviewStars" }) %><br>
+    <span id="new-review-rating"></span><br>
     <input type="submit" value="Submit Review">
   </form>
 </div>
