@@ -28,11 +28,15 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 		var that = this;
 
 		this.collection.currentPage = page;
-		debugger;
+		var that = this;
+
 		this.collection.fetch({
-			data: { page: 3},
+			data: { page: page },
 			success: function(coll, resp, options) {
-				debugger;
+				var pageView = new Goodreadsclone.Views.BooksIndex({
+					collection: that.collection
+				});
+				that.rootEl.html(pageView.render().$el);
 			},
 			error: function(coll, resp, options){
 				debugger
