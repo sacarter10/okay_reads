@@ -2,7 +2,6 @@ Goodreadsclone.Collections.Books = Backbone.Collection.extend({
 
   model: Goodreadsclone.Models.Book,
 	url: "/books",
-	elemsPerPage: 25,
 
 	initialize: function () {
 		if (this.genre === undefined) {
@@ -38,6 +37,7 @@ Goodreadsclone.Collections.Books = Backbone.Collection.extend({
 	parse: function (data) {
 		this.currentPage = data.current_page;
 		this.totalPages = data.total_pages;
+		this.elemsPerPage = data.per_page;
 
 		return data.models;
 	}

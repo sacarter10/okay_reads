@@ -8,10 +8,6 @@
   <a href="<%=path%><%=books.prevPage()%>">Prev</a>
 <% }; %>
 
-<% for (var  i = 1; i <= books.totalPages; i++) { %>
-    <a href="<%=path%><%=i%>"><%=i%></a>
-<% } %>
-
 <% if (books.currentPage < books.totalPages) { %>
     <a href="<%=path%><%=books.nextPage()%>">Next</a>
 <% }; %>

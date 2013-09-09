@@ -15,6 +15,7 @@
 //= require serializeJSON
 //= require underscore
 //= require backbone
+//= require foundation
 //= require goodreadsclone
 //= require_tree ../templates
 //= require_tree ./models
@@ -22,3 +23,5 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
+
+$(document).foundation();

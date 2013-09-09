@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.order('title').page(params[:page]).includes(:reviews)
+    @per_page = 25
+    @books = Book.order('title').page(params[:page]).per(@per_page)
     @page = params[:page]
 
     render "index.rabl"
