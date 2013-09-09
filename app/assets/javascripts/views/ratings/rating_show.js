@@ -19,7 +19,7 @@ Goodreadsclone.Views.RatingShow = Backbone.View.extend({
 		var that = this;
 
 		var existingReview = this.model;
-		if (existingReview) { 
+		if (existingReview) {
 		//Save will create a new model if it doesn't exist! but...you'd need to add it to collection by hand???
 			existingReview.save({
 				rating: $(event.target).parent().attr('id').slice(-1)
@@ -41,6 +41,8 @@ Goodreadsclone.Views.RatingShow = Backbone.View.extend({
 				wait: true,
 				success: function (review, response, options) {
 					console.log("saved successfully");
+					console.log('now the collection looks like')
+					console.log(that.collection)
 				},
 				error: function (review, xhr, options) {
 					console.log('create failed')

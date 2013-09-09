@@ -17,7 +17,7 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 
 		console.log('currentUserId');
 		console.log(Goodreadsclone.Store.currentUser);
-		var currentReview = this.model.get('reviews').findWhere({ 
+		var currentReview = this.model.get('reviews').findWhere({
 			user_id: Goodreadsclone.Store.currentUser.id
 		});
 
@@ -55,13 +55,14 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 			user_id: Goodreadsclone.Store.currentUser.id
 		});
 
-		var ratingView = new Goodreadsclone.Views.RatingShow({ 
-			collection: this.model.get('reviews'), 
-			model: currentReview 
+		var ratingView = new Goodreadsclone.Views.RatingShow({
+			collection: this.model.get('reviews'),
+			model: currentReview
 		});
 
 		this.$el.find('#new-review-rating').html(ratingView.render().$el);
 	},
+
 	initialize: function () {
 		this.listenTo(this.model, 'change', this.render);
 	},
@@ -75,14 +76,14 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 			user_id: Goodreadsclone.Store.currentUser.id
 		});
 
-		var ratingView = new Goodreadsclone.Views.RatingShow({ 
-			collection: this.model.get('reviews'), 
-			model: currentReview 
+		var ratingView = new Goodreadsclone.Views.RatingShow({
+			collection: this.model.get('reviews'),
+			model: currentReview
 		});
 		this.$el.find('#currentRating').html(ratingView.render().$el);
 
-		var reviewsView = new Goodreadsclone.Views.ReviewsIndex({ 
-			collection: this.model.get('reviews') 
+		var reviewsView = new Goodreadsclone.Views.ReviewsIndex({
+			collection: this.model.get('reviews')
 		});
 		this.$el.find('#reviews').html(reviewsView.render().$el);
 

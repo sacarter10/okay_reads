@@ -28,17 +28,30 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 		var that = this;
 
 		this.collection.currentPage = page;
+		debugger;
 		this.collection.fetch({
-			removex: false,
-			data: { page: page },
-			success: function () {
-				console.log(that.collection);
-				var pageView = new Goodreadsclone.Views.BooksIndex({
-					collection: that.collection
-				});
-				that.rootEl.html(pageView.render().$el);
-			}
+			data: { page: 3},
+			success: function(coll, resp, options) {
+				debugger;
+			},
+			error: function(coll, resp, options){
+				debugger
+			},
 		});
+		// {
+// 					data: {page: 3},
+// 					error: function () {
+// 						debugger
+// 						console.log("error")
+// 					},
+// 					success: function () {
+// 						debugger
+// 						var pageView = new Goodreadsclone.Views.BooksIndex({
+// 							collection: that.collection
+// 						});
+// 						that.rootEl.html(pageView.render().$el);
+// 					}
+// 				}
 	},
 
 	bookShow: function (book_id) {
@@ -58,7 +71,7 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 		genreCol.genre = genre;
 
 		var genreView = new Goodreadsclone.Views.BooksIndex({
-			collection: genreCol, //will the books in this collection still point to the books in the main collection?
+			collection: genreCol
 		});
 
 		this.rootEl.html(genreView.render().$el);

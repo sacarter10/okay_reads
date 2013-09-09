@@ -7,7 +7,6 @@ Goodreadsclone.Views.BooksIndex = Backbone.View.extend({
 
 		this.$el.html(this.template({
 			books: that.collection,
-			page: that.collection.currentPage,
 			path: that.collection.pagePath
 		}));
 		return this;

@@ -20,11 +20,10 @@ class SessionsController < ApplicationController
       @user.reset_session_token!
       session[:token] = @user.session_token
 
-      p "!!!!!!!!!"
       p @user.session_token
       p session[:token]
       p current_user
-      redirect_to "/root"
+      redirect_to root_url
     end
   end
 
