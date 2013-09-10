@@ -1,6 +1,6 @@
 Goodreadsclone.Models.Book = Backbone.Model.extend({
 	parse: function (data) {
-		var reviews = new Goodreadsclone.Collections.Reviews(data.reviews);
+		var reviews = new Goodreadsclone.Collections.Reviews(data.reviews, { parse: true });
 		reviews.book_id = data.id;
 		data.reviews = reviews;
 

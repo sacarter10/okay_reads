@@ -6,7 +6,6 @@ SUBJECTS = ["science_fiction", "fantasy", "biography",
   "classics", "historical_fiction", "mystery",
   "poetry", "romance"]
 
-  #debugger
 SUBJECTS.each do |subject|
   url = Addressable::URI.new(
     :scheme => "http",
@@ -28,3 +27,4 @@ SUBJECTS.each do |subject|
     })
   end
 end
+

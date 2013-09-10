@@ -3,11 +3,16 @@ Goodreadsclone.Views.ReviewShow = Backbone.View.extend({
   template: JST['reviews/show'],
 
 	events: {
-		'dblclick' : 'editReview'
+		'submit #editReview' : 'editReview',
+		'submit #updateReview' : 'updateReview'
 	},
 
 	editReview: function (event) {
-		$(event.currentTarget).addClass('edit');
+		event.preventDefault();
+
+		this.$el.find('#review').css('display', 'none');
+		this.$el.find('#editReview').css('display', 'none');
+		this.$el.find('#updateReview').css('display', 'inline-block');
 	},
 
 	initialize: function () {
@@ -26,7 +31,23 @@ Goodreadsclone.Views.ReviewShow = Backbone.View.extend({
 	},
 
 	updateReview: function () {
-		
+		console.log('hit updateReview')
+		event.preventDefault();
+
+		this.$el.find('#review').css('display', 'block');
+		this.$el.find('#editReview').css('display', 'inline-block');
+		this.$el.find('#updateReview').css('display', 'none');
+
+		var reviewData = $(event.target).serializeJSON();
+
+		this.model.save(reviewData, {
+			success: function () {
+				console.log('successfully updated');
+			},
+			error: function () {
+				console.log('failed to update');
+			}
+		})
 	}
 
 });

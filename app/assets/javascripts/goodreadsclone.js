@@ -8,8 +8,6 @@ window.Goodreadsclone = {
 		this.Store.currentUser = new Goodreadsclone.Models.User(
 					JSON.parse($('#current_user_json').html()), { parse: true });
 
-		console.log(this.Store.currentUser);
-
 		var books = new Goodreadsclone.Collections.Books();
 		books.fetch({
 			data: { page: 1 },

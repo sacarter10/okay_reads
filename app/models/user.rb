@@ -9,9 +9,13 @@ class User < ActiveRecord::Base
   validates :username, :email, :presence => true
 
   has_many :reviews
-
   has_many :reviewed_books,
     :through => :reviews,
+    :source => :book
+
+  has_many :book_flags
+  has_many :to_read_books,
+    :through => :want_to_reads,
     :source => :book
 
   def password=(text_password)

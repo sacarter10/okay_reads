@@ -22,5 +22,9 @@ node :average_rating do |book|
 end
 
 child :reviews do
-  attributes :id, :user_id, :rating, :title, :body
+  attributes :id, :rating, :title, :body
+
+  child :user do
+    attributes :id, :username
+  end
 end

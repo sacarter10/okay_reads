@@ -33,7 +33,6 @@ Goodreadsclone.Views.RatingShow = Backbone.View.extend({
 				}
 			})
 			} else {
-			debugger
 			this.collection.create({
 				rating: $(event.target).parent().attr('id').slice(-1), //id is in format "star1"
 				book_id: that.collection.book_id
