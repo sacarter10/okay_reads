@@ -5,11 +5,11 @@
 <% }); %>
 
 <% if (books.currentPage > 1) { %>
-  <a href="<%=path%><%=books.prevPage()%>">Prev</a>
+  <a href="<%=books.pagePath()%><%=books.prevPage()%>">Prev</a>
 <% }; %>
 
 <% if (books.currentPage < books.totalPages) { %>
-    <a href="<%=path%><%=books.nextPage()%>">Next</a>
+    <a href="<%=books.pagePath()%><%=books.nextPage()%>">Next</a>
 <% }; %>
 
 

@@ -15,14 +15,11 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 		var reviewData = $(event.currentTarget).serializeJSON();
 		reviewData.review.book_id = this.model.get('book_id');
 
-		console.log('currentUserId');
-		console.log(Goodreadsclone.Store.currentUser);
 		var currentReview = this.model.get('reviews').findWhere({
 			user_id: Goodreadsclone.Store.currentUser.id
 		});
 
 		if (currentReview) {
-			console.log('just update the fucking review')
 			currentReview.save(reviewData, {
 				wait: true,
 				success: function (review, response, options) {
@@ -34,7 +31,6 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 			}
 			);
 		} else {
-			console.log('no current review')
 			this.model.get('reviews').create(reviewData, {
 				wait: true,
 				success: function (review, response, options) {

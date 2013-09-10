@@ -16,6 +16,7 @@
 //= require underscore
 //= require backbone
 //= require foundation
+//= require jeditable
 //= require goodreadsclone
 //= require_tree ../templates
 //= require_tree ./models
@@ -25,3 +26,6 @@
 //= require_tree .
 
 $(document).foundation();
+$(document).ready(function() {
+     $('.edit').editable('/reviews');
+ });

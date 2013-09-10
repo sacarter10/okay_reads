@@ -4,11 +4,6 @@ Goodreadsclone.Collections.Books = Backbone.Collection.extend({
 	url: "/books",
 
 	initialize: function () {
-		if (this.genre === undefined) {
-			this.pagePath = "#/"
-		} else {
-			this.pagePath = "#genre/" + this.genre + "/"
-		}
 	},
 
 	prevPage: function () {
@@ -32,6 +27,14 @@ Goodreadsclone.Collections.Books = Backbone.Collection.extend({
 		this.elemsPerPage = data.per_page;
 
 		return data.models;
+	},
+
+	pagePath: function () {
+		if (this.currentGenre === undefined) {
+			return "#/";
+		} else {
+			return "#genre/" + this.currentGenre + "/";
+		}
 	}
 
 });

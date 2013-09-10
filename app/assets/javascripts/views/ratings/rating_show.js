@@ -11,7 +11,7 @@ Goodreadsclone.Views.RatingShow = Backbone.View.extend({
 		};
 
 		if (this.collection) {
-			this.listenTo(this.collection, "add", this.render);
+			this.listenTo(this.collection, "sync", this.render);
 		};
 	},
 
@@ -20,7 +20,6 @@ Goodreadsclone.Views.RatingShow = Backbone.View.extend({
 
 		var existingReview = this.model;
 		if (existingReview) {
-		//Save will create a new model if it doesn't exist! but...you'd need to add it to collection by hand???
 			existingReview.save({
 				rating: $(event.target).parent().attr('id').slice(-1)
 			}, {
@@ -34,6 +33,7 @@ Goodreadsclone.Views.RatingShow = Backbone.View.extend({
 				}
 			})
 			} else {
+			debugger
 			this.collection.create({
 				rating: $(event.target).parent().attr('id').slice(-1), //id is in format "star1"
 				book_id: that.collection.book_id
@@ -41,12 +41,12 @@ Goodreadsclone.Views.RatingShow = Backbone.View.extend({
 				wait: true,
 				success: function (review, response, options) {
 					console.log("saved successfully");
-					console.log('now the collection looks like')
+					// that.collection.trigger('sync');
+					that.model = review;
 					console.log(that.collection)
 				},
 				error: function (review, xhr, options) {
-					console.log('create failed')
-					console.log(xhr);
+					console.log('create failed');
 				}
 			});
 		}

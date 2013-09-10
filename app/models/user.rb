@@ -8,7 +8,11 @@ class User < ActiveRecord::Base
 
   validates :username, :email, :presence => true
 
-  has_many :ratings
+  has_many :reviews
+
+  has_many :reviewed_books,
+    :through => :reviews,
+    :source => :book
 
   def password=(text_password)
     self.password_hash = Password.create(text_password)

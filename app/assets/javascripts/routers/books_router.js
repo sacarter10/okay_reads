@@ -1,9 +1,10 @@
 Goodreadsclone.Routers.Books = Backbone.Router.extend({
 
 	routes: {
-		"(:page)": "booksPage",
 		"books(/:book_id)": "bookShow",
-		"genre/:genre(/:page)": "genrePage"
+		"genre/:genre(/:page)": "genrePage",
+		"bookshelf": "bookshelf",
+		"(:page)": "booksPage"
 	},
 
 	initialize: function (options) {
@@ -24,11 +25,11 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 	},
 
 	booksPage: function (page) {
+		console.log('in booksPage')
 		var page = page || 1;
 		var that = this;
 
 		this.collection.currentPage = page;
-		var that = this;
 
 		this.collection.fetch({
 			data: { page: page },
@@ -42,43 +43,45 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 				debugger
 			},
 		});
-		// {
-// 					data: {page: 3},
-// 					error: function () {
-// 						debugger
-// 						console.log("error")
-// 					},
-// 					success: function () {
-// 						debugger
-// 						var pageView = new Goodreadsclone.Views.BooksIndex({
-// 							collection: that.collection
-// 						});
-// 						that.rootEl.html(pageView.render().$el);
-// 					}
-// 				}
 	},
 
 	bookShow: function (book_id) {
-		var book = this.collection.get(book_id);
-		var bookView = new Goodreadsclone.Views.BookShow( { model: book } );
-
-		this.rootEl.html(bookView.render().$el);
+		var that = this;
+		var book = new Goodreadsclone.Models.Book({ id: book_id });
+		book.fetch({
+			success: function (model, res, options) {
+				var bookView = new Goodreadsclone.Views.BookShow( { model: book } );
+				that.rootEl.html(bookView.render().$el);
+			}
+		});
 	},
 
 	genrePage: function (genre, page) {
-		var books = this.collection.where({ genre: genre});
-		var genreCol = new Goodreadsclone.Collections.Books(books)
-
+		console.log('in genre page')
 		var page = page || 1;
+		var that = this;
 
-		genreCol.currentPage = parseInt(page);
-		genreCol.genre = genre;
+		this.collection.currentPage = page;
+		this.collection.currentGenre = genre;
 
-		var genreView = new Goodreadsclone.Views.BooksIndex({
-			collection: genreCol
+		this.collection.fetch({
+			data: { page: page, genre: genre },
+			success: function(coll, resp, options) {
+				var pageView = new Goodreadsclone.Views.BooksIndex({
+					collection: that.collection
+				});
+				that.rootEl.html(pageView.render().$el);
+			},
+			error: function(coll, resp, options) {
+				debugger
+			},
 		});
+	},
 
-		this.rootEl.html(genreView.render().$el);
+	bookshelf: function () {
+		console.log('in shelfIndex')
+		var shelfView = new Goodreadsclone.Views.ShelvesIndex();
+
+		this.rootEl.html(shelfView.render().$el);
 	}
-
 });

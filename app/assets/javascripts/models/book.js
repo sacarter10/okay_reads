@@ -14,5 +14,7 @@ Goodreadsclone.Models.Book = Backbone.Model.extend({
 		return json;
 	},
 
-	urlRoot: "/ratings"
+	url: function () {
+		return "/books/" + this.id;
+	}
 });
