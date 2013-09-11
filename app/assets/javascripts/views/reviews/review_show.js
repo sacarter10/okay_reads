@@ -27,6 +27,10 @@ Goodreadsclone.Views.ReviewShow = Backbone.View.extend({
 		});
 		this.$el.find('#review-rating').html(ratingView.render().$el);
 
+		if (!(this.model.get('user').id === Goodreadsclone.Store.currentUser.id)) {
+			this.$el.find('#review-rating .editable').removeClass('editable');
+		}
+
 		return this;
 	},
 

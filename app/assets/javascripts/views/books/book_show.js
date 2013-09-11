@@ -5,14 +5,14 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
   events: {
 		"click #new-review-button": "newReview",
 		"submit #create-review": "createReview",
-		"submit #want-to-read": "addWantToRead"
+		"click #want-to-read": "addWantToRead"
 	},
 
 	addWantToRead: function (event) {
+		console.log('hit want to read');
 		event.preventDefault();
 
-		$('#want-to-read input[type=submit]').attr('disabled', 'disabled');
-
+		$('#want-to-read').attr('disabled', 'disabled');
 		$.ajax({
 			url: "/book_flags",
 			type: "POST",
@@ -32,8 +32,7 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 
 	createReview: function (event) {
 		event.preventDefault();
-
-		this.$el.find('#new-review-form').empty();
+		var that = this;
 
 		var reviewData = $(event.currentTarget).serializeJSON();
 		reviewData.review.book_id = this.model.get('book_id');
@@ -46,6 +45,7 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 			currentReview.save(reviewData, {
 				wait: true,
 				success: function (review, response, options) {
+					that.$el.find('#new-review-form').empty();
 					console.log("saved successfully");
 				},
 				error: function (review, xhr, options) {
@@ -57,10 +57,11 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 			this.model.get('reviews').create(reviewData, {
 				wait: true,
 				success: function (review, response, options) {
+					that.$el.find('#new-review-form').empty();
 					console.log("saved successfully");
 				},
 				error: function (review, xhr, options) {
-					console.log("error");
+					alert(xhr.responseJSON[0]);
 				}
 			});
 		}
@@ -98,7 +99,7 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 
 		var ratingView = new Goodreadsclone.Views.RatingShow({
 			collection: this.model.get('reviews'),
-			model: currentReview
+			model: currentReview // null if current user hasn't rated book
 		});
 		this.$el.find('#currentRating').html(ratingView.render().$el);
 

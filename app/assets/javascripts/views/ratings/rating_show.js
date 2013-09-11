@@ -2,7 +2,7 @@ Goodreadsclone.Views.RatingShow = Backbone.View.extend({
 	template: JST['ratings/show'],
 
 	events: {
-		"click .stars": "makeRating"
+		"click .stars .editable": "makeRating"
 	},
 
 	initialize: function () {
@@ -29,7 +29,7 @@ Goodreadsclone.Views.RatingShow = Backbone.View.extend({
 				},
 				error: function (review, xhr, options) {
 					console.log('update failed');
-					console.log(review);
+					alert(xhr.responseText);
 				}
 			})
 			} else {
@@ -45,7 +45,7 @@ Goodreadsclone.Views.RatingShow = Backbone.View.extend({
 					console.log(that.collection)
 				},
 				error: function (review, xhr, options) {
-					console.log('create failed');
+					alert(xhr.responseText);
 				}
 			});
 		}

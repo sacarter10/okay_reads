@@ -1,13 +1,19 @@
 <h2>Your bookshelf</h2>
 
-Books You've Read
-<div class="reviewedShelf">
-<% user.get('reviewed_books').each(function (book) { %>
-	<img src="http://covers.openlibrary.org/b/olid/<%=book.escape('open_library_id')%>-S.jpg" />
-<% }); %>
+	Books You've Read
+<div class="reviewedShelf" style="display: block;">
+	<span>
+		<% user.get('reviewed_books').each(function (book) { %>
+			<img src="http://covers.openlibrary.org/b/olid/<%=book.escape('open_library_id')%>-S.jpg" />
+		<% }); %>
+	</span>
 </div>
 
 Books You Want to Read
-<div class="toReadShelf">
-
+<div class="toReadShelf" style="display: block;">
+	<span>
+		<% user.get('to_read_books').each(function (book) { %>
+			<img src="http://covers.openlibrary.org/b/olid/<%=book.escape('open_library_id')%>-S.jpg" />
+		<% }); %>
+	</span>
 </div>

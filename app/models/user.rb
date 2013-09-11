@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   has_many :book_flags
   has_many :to_read_books,
-    :through => :want_to_reads,
+    :through => :book_flags,
     :source => :book
 
   def password=(text_password)

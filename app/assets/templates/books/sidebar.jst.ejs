@@ -1,8 +1,9 @@
 <h4>Browse by genre</h4>
 
 <% _(genres).each( function (genre) { %>
-  <a href="#genre/<%= genre %>"><%= genre %></a>
-  <br>
+ <li>
+	 <a href="#genre/<%= genre %>"><%= genre %></a>
+ </li>
 <% }); %>
 
 <a href="#bookshelf">My Books</a>

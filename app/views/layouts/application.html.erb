@@ -9,11 +9,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<% if flash[:errors] %>
-		<% flash[:errors].each do |error| %>
-		<%= error %><br>
-		<% end %>
-	<% end %>
+	<div class="row">
+		<div class="large-5 large-centered columns">
+			<% if flash[:errors] %>
+				<% flash[:errors].each do |error| %>
+				<span class="round alert label"><%= error %></span>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
 
 <%= yield %>
 

@@ -25,7 +25,6 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 	},
 
 	booksPage: function (page) {
-		console.log('in booksPage')
 		var page = page || 1;
 		var that = this;
 
@@ -57,7 +56,6 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 	},
 
 	genrePage: function (genre, page) {
-		console.log('in genre page')
 		var page = page || 1;
 		var that = this;
 
@@ -79,10 +77,19 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 	},
 
 	bookshelf: function () {
-		console.log('in shelfIndex')
-		var shelfView = new Goodreadsclone.Views.ShelvesIndex();
+		var that = this;
 
-		this._swapView(shelfView);
+		var user = Goodreadsclone.Store.currentUser.fetch({
+			success: function (user) {
+				var shelfView = new Goodreadsclone.Views.ShelvesIndex({
+					model: Goodreadsclone.Store.currentUser
+				});
+				that._swapView(shelfView);
+			},
+			error: function (response, xhr, options) {
+				console.log(xhr.responseJSON);
+			}
+		});
 	},
 
 	_swapView: function (newView) {

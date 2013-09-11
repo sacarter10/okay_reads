@@ -2,9 +2,11 @@ Goodreadsclone.Models.User = Backbone.Model.extend({
 	parse: function (data) {
 		var reviews = new Goodreadsclone.Collections.Reviews(data.reviews);
 		var reviewed_books = new Goodreadsclone.Collections.Books(data.reviewed_books);
+		var to_read_books = new Goodreadsclone.Collections.Books(data.to_read_books);
 
 		data.reviews = reviews;
 		data.reviewed_books = reviewed_books;
+		data.to_read_books = to_read_books;
 
 		return data;
 	},
@@ -15,5 +17,9 @@ Goodreadsclone.Models.User = Backbone.Model.extend({
 		delete json.reviewed_books;
 
 		return json;
+	},
+
+	url: function () {
+		return "/users/" + this.id;
 	}
 });

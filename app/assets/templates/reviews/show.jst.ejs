@@ -5,7 +5,7 @@
 		<%= review.escape('body') %>
 	</div>
 
-	<% if (review.get('user_id') === Goodreadsclone.Store.currentUser.get('id')) { %>
+	<% if (review.get('user').id === Goodreadsclone.Store.currentUser.id) { %>
 		<form id="updateReview" style="display: none">
 
 			<input type="text" name="review[title]" value="<%= review.escape('title')%>" id="review_title">
