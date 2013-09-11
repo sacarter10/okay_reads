@@ -37,7 +37,7 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 				var pageView = new Goodreadsclone.Views.BooksIndex({
 					collection: that.collection
 				});
-				that.rootEl.html(pageView.render().$el);
+				that._swapView(pageView);
 			},
 			error: function(coll, resp, options){
 				debugger
@@ -51,7 +51,7 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 		book.fetch({
 			success: function (model, res, options) {
 				var bookView = new Goodreadsclone.Views.BookShow( { model: book } );
-				that.rootEl.html(bookView.render().$el);
+				that._swapView(bookView);
 			}
 		});
 	},
@@ -70,7 +70,7 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 				var pageView = new Goodreadsclone.Views.BooksIndex({
 					collection: that.collection
 				});
-				that.rootEl.html(pageView.render().$el);
+				that._swapView(pageView);
 			},
 			error: function(coll, resp, options) {
 				debugger
@@ -82,6 +82,12 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 		console.log('in shelfIndex')
 		var shelfView = new Goodreadsclone.Views.ShelvesIndex();
 
-		this.rootEl.html(shelfView.render().$el);
+		this._swapView(shelfView);
+	},
+
+	_swapView: function (newView) {
+		this._currentView && this._currentView.remove();
+		this._currentView = newView;
+		$(this.rootEl).html(newView.render().$el);
 	}
 });

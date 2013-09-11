@@ -3,7 +3,7 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
   template: JST['books/show'],
 
   events: {
-		"submit #new-review-button": "newReview",
+		"click #new-review-button": "newReview",
 		"submit #create-review": "createReview",
 		"submit #want-to-read": "addWantToRead"
 	},
@@ -67,12 +67,13 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 	},
 
 	newReview: function (event) {
+		event.preventDefault();
+
 		this.$el.find('#new-review-button').remove();
 		this.$el.find('#new-review-form').append(JST['reviews/new']());
 
-		var currentReview = this.model.get('reviews').findWhere({
-			user: Goodreadsclone.Store.currentUser
-		});
+		var currentReview =
+			this.model.get('reviews').findByUserId(Goodreadsclone.Store.currentUser.id);
 
 		var ratingView = new Goodreadsclone.Views.RatingShow({
 			collection: this.model.get('reviews'),
