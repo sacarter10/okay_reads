@@ -23,7 +23,7 @@
 			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 			<input type="hidden" name="_method" value="delete">
 
-			<input type="submit" value="Log out <%= current_user.username %>">
+			<button class="small button">Log out <%= current_user.username %></button>
 		</form>
 	</div>
 <% end %>

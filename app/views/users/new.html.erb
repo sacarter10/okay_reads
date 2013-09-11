@@ -1,20 +1,34 @@
-<h2>Sign Up</h2>
-
 <% if logged_in? %>
-	You are already logged in as <%=current_user.username%>. Please log out before creating a new account.
+	<p>
+		You are already logged in as <%=current_user.username%>.
+		Please log out before creating a new account.
+	</p>
 <% else %>
-	<form action="<%= users_url %>" method="post">
-		<input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">
+<div class="row">
+	<div class="large-5 large-centered columns">
+		<form action="<%= users_url %>" method="post">
+			<fieldset>
+				<legend>Sign Up</legend>
+				<input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">
 
-		<label for="user_username">Username:</label>
-		<input type="text" name="user[username]" id="user_username"><br>
+				<label for="user_username">Username:</label>
+				<input type="text" name="user[username]" id="user_username"><br>
 
-		<label for="user_email">Email address:</label>
-		<input type="text" name="user[email]" id="user_email"><br>
+				<label for="user_email">Email address:</label>
+				<input type="text" name="user[email]" id="user_email"><br>
 
-		<label for="user_password">Password:</label>
-		<input type="password" name="user[password]" id="user_password"><br>
+				<label for="user_password">Password:</label>
+				<input type="password" name="user[password]" id="user_password"><br>
 
-		<input type="submit" value="Sign Up!">
-	</form>
+				<button>Sign Up!</button>
+			</fieldset>
+		</form>
+	</div>
+</div>
+<div class="row">
+	<div class="large-5 large-centered columns">
+		Already have an account? <%= link_to "Sign In", new_session_url %>
+	</div>
+</div>
 <% end %>
+
