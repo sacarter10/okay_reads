@@ -1,14 +1,16 @@
-<div id="content" style="float: left;">
+<div class="row">
+	<div id="content" class="large-8 columns">
+	</div>
+
+	<ul id="sidebar" class="side-nav" class="large-2 columns">
+	</ul>
 </div>
 
-<ul id="sidebar" class="side-nav">
-</ul>
-
 <script type="application/json" id="current_user_json">
-  {
+	{
 		"id": <%= current_user.id %>,
 		"username": "<%= current_user.username %>"
-	 }
+	}
 </script>
 
 <script>

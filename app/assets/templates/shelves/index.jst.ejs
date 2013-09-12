@@ -1,6 +1,6 @@
 <h2>Your bookshelf</h2>
 
-	Books You've Read
+<a href="#bookshelf/reviewed">Books You've Read</a>
 <div class="reviewedShelf" style="display: block;">
 	<span>
 		<% user.get('reviewed_books').each(function (book) { %>
@@ -9,7 +9,7 @@
 	</span>
 </div>
 
-Books You Want to Read
+<a href="#bookshelf/to_read">Books You Want to Read</a>
 <div class="toReadShelf" style="display: block;">
 	<span>
 		<% user.get('to_read_books').each(function (book) { %>

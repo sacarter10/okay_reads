@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.includes(:reviewed_books).includes(:reviews).find(params[:id])
 
     render "show.rabl"
   end

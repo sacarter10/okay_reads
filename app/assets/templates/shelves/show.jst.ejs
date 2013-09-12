@@ -1,0 +1,22 @@
+<h3><%= shelfName %></h3>
+<table>
+	<th>Cover</th>
+	<th>Title</th>
+	<th>Author</th>
+	<th>Avg. Rating</th>
+	<th>Rating</th>
+	<th>Remove</th>
+
+	<% books.each( function (book) { %>
+		<tr id="book<%= book.escape('id') %>">
+			<td>
+				<img src="http://covers.openlibrary.org/b/OLID/<%=book.get('open_library_id')%>-S.jpg">
+			</td>
+			<td><%= book.get('title')%></td>
+			<td><%= book.get('author')%></td>
+			<td><%= book.get('average_rating')%></td>
+			<td id="rating"></td>
+			<td id="remove-book">&#x2716;</td>
+		</tr>
+	<% })%>
+</table>
