@@ -13,7 +13,9 @@
 			<td>
 				<img src="http://covers.openlibrary.org/b/OLID/<%=book.get('open_library_id')%>-S.jpg">
 			</td>
-			<td><%= book.get('title')%></td>
+			<td>
+				<a href="#books/<%=book.get('id')%>"><%= book.get('title')%></a>
+			</td>
 			<td><%= book.get('author')%></td>
 			<td><%= book.get('average_rating')%></td>
 			<td id="rating"></td>

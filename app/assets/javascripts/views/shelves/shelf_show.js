@@ -7,14 +7,8 @@ Goodreadsclone.Views.ShelfShow = Backbone.View.extend({
 	},
 
 	initialize: function () {
-		if (this.options.shelfName === "to_read") {
-			this.collection = Goodreadsclone.Store.currentUser.get('to_read_books');
-			console.log(Goodreadsclone.Store.currentUser);
-			this.options.shelfName = "Books You Want to Read";
-		} else if (this.options.shelfName === "reviewed") {
-			this.collection = Goodreadsclone.Store.currentUser.get('reviews');
-			this.options.shelfName = "Books You Have Read";
-		}
+		this.collection = Goodreadsclone.Store.currentUser.get('reviews');
+		this.options.shelfName = "Books You Have Read";
 	},
 
 	removeBook: function (event) {

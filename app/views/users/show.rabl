@@ -1,8 +1,8 @@
 object @user
 attributes :id, :username
 
-child :reviews do
-  attributes :id, :title, :body, :book_id, :rating
+child @reviews => :reviews do
+  attributes :id, :title, :body, :book_id, :rating, :created_at
 
   child :book => :reviewed_book do
     attributes :id, :title, :author, :genre, :open_library_id

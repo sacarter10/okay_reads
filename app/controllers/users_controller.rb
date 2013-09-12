@@ -17,7 +17,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(:reviewed_books).find(params[:id])
+    @user = User.find(params[:id])
+    @reviews = @user.reviews.order('created_at DESC').includes(:book => :reviews)
 
     render "show.rabl"
   end
