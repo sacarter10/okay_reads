@@ -1,11 +1,9 @@
 Goodreadsclone.Models.User = Backbone.Model.extend({
 	parse: function (data) {
-		var reviews = new Goodreadsclone.Collections.Reviews(data.reviews);
-		var reviewed_books = new Goodreadsclone.Collections.Books(data.reviewed_books);
+		var reviews = new Goodreadsclone.Collections.Reviews(data.reviews, {parse: true});
 		var to_read_books = new Goodreadsclone.Collections.Books(data.to_read_books);
 
 		data.reviews = reviews;
-		data.reviewed_books = reviewed_books;
 		data.to_read_books = to_read_books;
 
 		return data;
@@ -14,7 +12,7 @@ Goodreadsclone.Models.User = Backbone.Model.extend({
 	toJSON: function () {
 		var json = Backbone.Model.prototype.toJSON.call(this);
 		delete json.reviews;
-		delete json.reviewed_books;
+		delete json.to_read_books;
 
 		return json;
 	},

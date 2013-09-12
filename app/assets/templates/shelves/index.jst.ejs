@@ -1,9 +1,10 @@
-<h2>Your bookshelf</h2>
+<h2>Your bookshelves</h2>
 
 <a href="#bookshelf/reviewed">Books You've Read</a>
 <div class="reviewedShelf" style="display: block;">
 	<span>
-		<% user.get('reviewed_books').each(function (book) { %>
+		<% user.get('reviews').each(function (review) { %>
+			<% var book = review.get('reviewed_book') %>
 			<img src="http://covers.openlibrary.org/b/olid/<%=book.escape('open_library_id')%>-S.jpg" />
 		<% }); %>
 	</span>

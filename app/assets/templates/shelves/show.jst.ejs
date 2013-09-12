@@ -7,7 +7,8 @@
 	<th>Rating</th>
 	<th>Remove</th>
 
-	<% books.each( function (book) { %>
+	<% reviews.each( function (review) { %>
+		<% var book = review.get('reviewed_book') %>
 		<tr id="book<%= book.escape('id') %>">
 			<td>
 				<img src="http://covers.openlibrary.org/b/OLID/<%=book.get('open_library_id')%>-S.jpg">
@@ -16,7 +17,7 @@
 			<td><%= book.get('author')%></td>
 			<td><%= book.get('average_rating')%></td>
 			<td id="rating"></td>
-			<td id="remove-book">&#x2716;</td>
+			<td id="remove-book">&#x2716;</td><!-- multiplication x -->
 		</tr>
 	<% })%>
 </table>

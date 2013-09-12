@@ -40,7 +40,7 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 				that._swapView(pageView);
 			},
 			error: function(coll, resp, options){
-				debugger
+				console.log(resp.responseJSON);
 			},
 		});
 	},
@@ -57,6 +57,7 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 	},
 
 	bookshelfShow: function (name) {
+
 		var that = this;
 
 		var user = Goodreadsclone.Store.currentUser.fetch({
