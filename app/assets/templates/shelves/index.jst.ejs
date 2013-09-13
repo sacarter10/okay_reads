@@ -1,20 +1,29 @@
 <h2>Your bookshelves</h2>
 
-<a href="#bookshelf/reviewed">Books You've Read</a>
-<div class="reviewedShelf" style="display: block;">
-	<span>
-		<% user.get('reviews').each(function (review) { %>
-			<% var book = review.get('reviewed_book') %>
-			<img src="http://covers.openlibrary.org/b/olid/<%=book.escape('open_library_id')%>-S.jpg" />
-		<% }); %>
-	</span>
+<div class="row">
+	<a href="#bookshelf/reviewed">Books You've Read</a>
+	<div class="reviewedShelf" style="display: block;">
+		<span>
+			<% user.get('reviews').each(function (review) { %>
+				<% var book = review.get('book') %>
+				<a href="#books/<%= book.escape('id') %>">
+					<img src="http://covers.openlibrary.org/b/olid/<%=book.escape('open_library_id')%>-S.jpg" />
+				</a>
+			<% }); %>
+		</span>
+	</div>
 </div>
 
-<a href="#bookshelf/to_read">Books You Want to Read</a>
-<div class="toReadShelf" style="display: block;">
-	<span>
-		<% user.get('to_read_books').each(function (book) { %>
-			<img src="http://covers.openlibrary.org/b/olid/<%=book.escape('open_library_id')%>-S.jpg" />
-		<% }); %>
-	</span>
+<div class="row">
+	<a href="#bookshelf/to_read">Books You Want to Read</a>
+	<div class="toReadShelf" style="display: block;">
+		<span>
+			<% user.get('book_flags').each(function (book_flag) { %>
+				<% var book = book_flag.get('book') %>
+				<a href="#books/<%= book.escape('id') %>">
+					<img src="http://covers.openlibrary.org/b/olid/<%=book.escape('open_library_id')%>-S.jpg" />
+				</a>
+			<% }); %>
+		</span>
+	</div>
 </div>

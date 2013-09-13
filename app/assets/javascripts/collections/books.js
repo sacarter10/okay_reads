@@ -3,9 +3,6 @@ Goodreadsclone.Collections.Books = Backbone.Collection.extend({
   model: Goodreadsclone.Models.Book,
 	url: "/books",
 
-	initialize: function () {
-	},
-
 	prevPage: function () {
 		return parseInt(this.currentPage) - 1;
 	},

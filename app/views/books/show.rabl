@@ -21,6 +21,14 @@ node :average_rating do |book|
   end
 end
 
+node :to_read_flag do
+  if !logged_in?
+    null
+  else
+    @book.book_flags.find_by_user_id(current_user.id)
+  end
+end
+
 child :reviews do
   attributes :id, :rating, :title, :body
 

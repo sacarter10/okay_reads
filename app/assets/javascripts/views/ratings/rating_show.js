@@ -45,7 +45,8 @@ Goodreadsclone.Views.RatingShow = Backbone.View.extend({
 					console.log(that.collection)
 				},
 				error: function (review, xhr, options) {
-					alert(xhr.responseText);
+					debugger
+					console.log(xhr.responseText);
 				}
 			});
 		}

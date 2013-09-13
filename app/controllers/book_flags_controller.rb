@@ -11,7 +11,7 @@ class BookFlagsController < ApplicationController
   end
 
   def destroy
-    @book_flag = Flag.find(params[:id])
+    @book_flag = BookFlag.find(params[:id])
     @book_flag.destroy
 
     render :json => @book_flag

@@ -9,23 +9,20 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 	},
 
 	addWantToRead: function (event) {
-		console.log('hit want to read');
 		event.preventDefault();
 
 		$('#want-to-read').attr('disabled', 'disabled');
-		$.ajax({
-			url: "/book_flags",
-			type: "POST",
-			data: {
-				book_flag: {
-					book_id: this.model.id,
-					user_id: Goodreadsclone.Store.currentUser.id
-				}
-			},
-			success: function (response, status, xhr) {
-				console.log(status);
-			}, error: function (xhr, status, errorThrown) {
-				console.log(status);
+
+		var bookFlag = new Goodreadsclone.Models.BookFlag({
+			book_id: this.model.id,
+			user_id: Goodreadsclone.Store.currentUser.id
+		});
+
+		bookFlag.save({}, {
+			success: function (flag, response, options) {
+				console.log('success');
+			}, error: function (flag, xhr, options) {
+				console.log(xhr.responseJSON);
 			}
 		});
 	},
@@ -109,8 +106,10 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 		});
 		this.$el.find('#reviews').html(reviewsView.render().$el);
 
-		// if this book is already on user's "Want to Read" shelf, disable button
-
+		// if this book is already on user's "Want to Read" shelf, disable buttons
+		if (this.model.get('to_read_flag')) {
+			this.$el.find('#want-to-read').attr('disabled', 'disabled');
+		}
 
 		return this;
 	}

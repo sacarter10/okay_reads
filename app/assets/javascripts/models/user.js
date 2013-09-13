@@ -1,10 +1,10 @@
 Goodreadsclone.Models.User = Backbone.Model.extend({
 	parse: function (data) {
 		var reviews = new Goodreadsclone.Collections.Reviews(data.reviews, {parse: true});
-		var to_read_books = new Goodreadsclone.Collections.Books(data.to_read_books);
+		var book_flags = new Goodreadsclone.Collections.BookFlags(data.book_flags, {parse: true});
 
 		data.reviews = reviews;
-		data.to_read_books = to_read_books;
+		data.book_flags = book_flags;
 
 		return data;
 	},

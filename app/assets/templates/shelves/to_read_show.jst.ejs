@@ -4,11 +4,11 @@
 	<th>Title</th>
 	<th>Author</th>
 	<th>Avg. Rating</th>
-	<th>Your Rating</th>
+	<th>Rating</th>
 	<th>Remove</th>
 
-	<% collection.each( function (reviewOrFlag) { %>
-		<% var book = reviewOrFlag.get('book') %>
+	<% bookFlags.each( function (bookFlag) { %>
+		<% var book = bookFlag.get('to_read_book') %>
 		<tr id="book<%= book.escape('id') %>">
 			<td>
 				<img src="http://covers.openlibrary.org/b/OLID/<%=book.get('open_library_id')%>-S.jpg">

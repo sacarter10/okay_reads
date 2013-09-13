@@ -7,6 +7,7 @@ class Book < ActiveRecord::Base
   validates :title, :uniqueness => {:case_sensitive => false}
 
   has_many :reviews
+  has_many :book_flags
 end
 
 

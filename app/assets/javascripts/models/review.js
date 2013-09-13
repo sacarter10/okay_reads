@@ -5,9 +5,9 @@ Goodreadsclone.Models.Review = Backbone.Model.extend({
 			data.user = user;
 		}
 
-		if (data.reviewed_book) {
-			var reviewed_book = new Goodreadsclone.Models.User(data.reviewed_book);
-			data.reviewed_book = reviewed_book;
+		if (data.book) {
+			var book = new Goodreadsclone.Models.User(data.book);
+			data.book = book;
 		}
 
 		return data;

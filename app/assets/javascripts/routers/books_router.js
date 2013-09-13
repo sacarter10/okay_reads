@@ -3,8 +3,8 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 	routes: {
 		"books(/:book_id)": "bookShow",
 		"genre/:genre(/:page)": "genrePage",
-		"bookshelf/(:name)": "bookshelfShow",
-		"bookshelves": "bookshelves",
+		"bookshelf/:name": "bookshelfShow",
+		"bookshelves": "bookshelvesIndex",
 		"(:page)": "booksPage"
 	},
 
@@ -42,6 +42,22 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 			error: function(coll, resp, options){
 				console.log(resp.responseJSON);
 			},
+		});
+	},
+
+	bookshelvesIndex: function (name) {
+		var that = this;
+
+		var user = Goodreadsclone.Store.currentUser.fetch({
+			success: function (user) {
+				var shelvesView = new Goodreadsclone.Views.ShelvesIndex({
+					model: Goodreadsclone.Store.currentUser
+				});
+				that._swapView(shelvesView);
+			},
+			error: function (response, xhr, options) {
+				console.log(xhr.responseJSON);
+			}
 		});
 	},
 
@@ -95,22 +111,22 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 		});
 	},
 
-	bookshelves: function (name) {
+	toReadShelfShow: function () {
+		debugger
 		var that = this;
 
 		var user = Goodreadsclone.Store.currentUser.fetch({
 			success: function (user) {
-				var shelvesView = new Goodreadsclone.Views.ShelvesIndex({
-					model: Goodreadsclone.Store.currentUser
+				var shelfView = new Goodreadsclone.Views.ToReadShelfShow({
+					user: Goodreadsclone.Store.currentUser
 				});
-				that._swapView(shelvesView);
+				that._swapView(shelfView);
 			},
 			error: function (response, xhr, options) {
 				console.log(xhr.responseJSON);
 			}
 		});
 	},
-
 
 	_swapView: function (newView) {
 		this._currentView && this._currentView.remove();

@@ -9,10 +9,10 @@ window.Goodreadsclone = {
 					JSON.parse($('#current_user_json').html()), { parse: true });
 
 		var books = new Goodreadsclone.Collections.Books();
-		books.fetch({
-			data: { page: 1 },
-			remove: false,
-			success: function () {
+		// books.fetch({
+		// 	data: { page: 1 },
+		// 	remove: false,
+		// 	success: function () {
 		    new Goodreadsclone.Routers.Books ({
 					collection: books,
 					sidebar: $('#sidebar'),
@@ -22,8 +22,8 @@ window.Goodreadsclone = {
   					"poetry", "romance"] //this is also in db/seeds.rb; refactor???
 				});
 				Backbone.history.start();
-			}
-		});
+		// 	}
+		// });
   }
 };
 
