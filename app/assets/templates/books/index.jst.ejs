@@ -2,14 +2,18 @@
 
 <% books.each(function (book) { %>
   <a href = "#books/<%= book.escape('id')%>"><%= book.escape('title') %></a><br>
-<% }); %>
+<% }); %><br>
 
 <% if (books.currentPage > 1) { %>
-  <a href="<%=books.pagePath()%><%=books.prevPage()%>">Prev</a>
+  <a href="<%=books.pagePath()%><%=books.prevPage()%>">&lt;</a>
+<% }; %>
+
+<% for (var i = 0; i < books.totalPages; i++) { %>
+  <a href="<%=books.pagePath()%>/i"><%= i %></a>
 <% }; %>
 
 <% if (books.currentPage < books.totalPages) { %>
-    <a href="<%=books.pagePath()%><%=books.nextPage()%>">Next</a>
+    <a href="<%=books.pagePath()%><%=books.nextPage()%>">&gt;</a>
 <% }; %>
 
 
