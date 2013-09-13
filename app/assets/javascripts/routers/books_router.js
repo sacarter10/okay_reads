@@ -22,7 +22,7 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 			genres: this.genres
 		});
 
-		this.sidebar.html(sidebarView.render().$el);
+		this.sidebar.prepend(sidebarView.render().$el);
 	},
 
 	booksPage: function (page) {

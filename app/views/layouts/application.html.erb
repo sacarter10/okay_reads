@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Goodreadsclone</title>
+  <title>OkayReads</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <% javascript_include_tag "vendor/custom.modernizr" %>
@@ -9,6 +9,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div class="row" id="header">
+		OkayReads
+	</div>
 	<div class="row">
 		<div class="large-5 large-centered columns">
 			<% if flash[:errors] %>
@@ -20,16 +23,5 @@
 	</div>
 
 <%= yield %>
-
-<% if logged_in? %>
-	<div class="logout">
-		<form action="<%=session_url%>" method="post">
-			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-			<input type="hidden" name="_method" value="delete">
-
-			<button class="small button">Log out <%= current_user.username %></button>
-		</form>
-	</div>
-<% end %>
 </body>
 </html>

@@ -1,5 +1,6 @@
 <% if logged_in? %>
 	You are already logged in as <%=current_user.username%>. Please log out before signing in again.
+	<%= render "layouts/logout" %>
 <% else %>
 <div class="row">
 	<div class="large-5 large-centered columns">

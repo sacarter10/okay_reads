@@ -1,8 +1,9 @@
 <% if logged_in? %>
-	<p>
-		You are already logged in as <%=current_user.username%>.
+	<pre>
+		You are already logged in as <%=current_user.username%>.<br>
 		Please log out before creating a new account.
 	</p>
+	<%= render "layouts/logout" %>
 <% else %>
 <div class="row">
 	<div class="large-5 large-centered columns">
