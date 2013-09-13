@@ -11,8 +11,6 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 	addWantToRead: function (event) {
 		event.preventDefault();
 
-		$('#want-to-read').attr('disabled', 'disabled');
-
 		var bookFlag = new Goodreadsclone.Models.BookFlag({
 			book_id: this.model.id,
 			user_id: Goodreadsclone.Store.currentUser.id
@@ -20,7 +18,7 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 
 		bookFlag.save({}, {
 			success: function (flag, response, options) {
-				console.log('success');
+				$('#want-to-read').attr('disabled', 'disabled');
 			}, error: function (flag, xhr, options) {
 				console.log(xhr.responseJSON);
 			}
@@ -93,6 +91,7 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 		// find in the current user's rating for this book	and fill in rating appropriately
 		var currentReview =
 			this.model.get('reviews').findByUserId(Goodreadsclone.Store.currentUser.id);
+
 
 		var ratingView = new Goodreadsclone.Views.RatingShow({
 			collection: this.model.get('reviews'),

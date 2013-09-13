@@ -18,18 +18,16 @@ Goodreadsclone.Views.ShelfShow = Backbone.View.extend({
 
 	removeBook: function (event) {
 		var bookRow = $(event.currentTarget).parent();
-		bookRow.remove();
-
-		debugger
-
 		var bookId = parseInt(bookRow.attr('id').slice(4)) //row ids in format 'book1', 'book2'
 
 		this.collection.findByBookId(bookId).destroy({
 			success: function () {
 				console.log('success');
+				bookRow.remove();
 			},
-			error: function () {
-				console.log('failure');
+			error: function (model, xhr, options) {
+				debugger
+				console.log(xhr.responseJSON);
 			}
 		});
 
@@ -53,7 +51,7 @@ Goodreadsclone.Views.ShelfShow = Backbone.View.extend({
 			}
 
 			var ratingsView = new Goodreadsclone.Views.RatingShow({
-				model: review,
+				model: new Goodreadsclone.Models.Review({ book_id: bookId }),
 				collection: Goodreadsclone.Store.currentUser.get('reviews')
 			});
 			that.$el.find('#book' + bookId + ' #rating').html(ratingsView.render().$el);

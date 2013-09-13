@@ -16,7 +16,7 @@ Goodreadsclone.Collections.Reviews = Backbone.Collection.extend({
 
 	findByBookId: function (bookId) {
 		for (var i = 0; i < this.models.length; i++) {
-			if (this.models[i].get('reviewed_book').id === bookId) {
+			if (this.models[i].get('book').id === bookId) {
 				return this.models[i];
 			}
 		};

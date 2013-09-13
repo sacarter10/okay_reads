@@ -19,6 +19,7 @@ Goodreadsclone.Views.RatingShow = Backbone.View.extend({
 		var that = this;
 
 		var existingReview = this.model;
+
 		if (existingReview) {
 			existingReview.save({
 				rating: $(event.target).parent().attr('id').slice(-1)
@@ -45,7 +46,6 @@ Goodreadsclone.Views.RatingShow = Backbone.View.extend({
 					console.log(that.collection)
 				},
 				error: function (review, xhr, options) {
-					debugger
 					console.log(xhr.responseText);
 				}
 			});

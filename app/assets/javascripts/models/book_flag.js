@@ -7,6 +7,10 @@ Goodreadsclone.Models.BookFlag = Backbone.Model.extend({
 	},
 
 	url: function () {
-		return "/book_flags/" + this.id;
+		if (this.get('id')) {
+			return "/book_flags/" + this.get('id');
+		} else {
+			return "/book_flags";
+		}
 	}
 });
