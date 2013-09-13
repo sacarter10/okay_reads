@@ -26,7 +26,6 @@ Goodreadsclone.Views.ShelfShow = Backbone.View.extend({
 				bookRow.remove();
 			},
 			error: function (model, xhr, options) {
-				debugger
 				console.log(xhr.responseJSON);
 			}
 		});
@@ -50,8 +49,13 @@ Goodreadsclone.Views.ShelfShow = Backbone.View.extend({
 				var bookId = review.get('book').id;
 			}
 
+			var review = review || new Goodreadsclone.Models.Review({
+					book_id: bookId,
+					url: "/reviews"
+				});
+
 			var ratingsView = new Goodreadsclone.Views.RatingShow({
-				model: new Goodreadsclone.Models.Review({ book_id: bookId }),
+				model: review,
 				collection: Goodreadsclone.Store.currentUser.get('reviews')
 			});
 			that.$el.find('#book' + bookId + ' #rating').html(ratingsView.render().$el);

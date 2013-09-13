@@ -22,15 +22,18 @@ Goodreadsclone.Views.RatingShow = Backbone.View.extend({
 
 		if (existingReview) {
 			existingReview.save({
-				rating: $(event.target).parent().attr('id').slice(-1)
+				rating: $(event.target).parent().attr('id').slice(-1),
+				url: "/reviews"
 			}, {
 				wait: true,
 				success: function (review, response, options) {
-					console.log("updated successfully");
+					if (this.collection) {
+						this.collection.add(review);
+					}
 				},
 				error: function (review, xhr, options) {
 					console.log('update failed');
-					alert(xhr.responseText);
+					console.log(xhr.responseText);
 				}
 			})
 			} else {

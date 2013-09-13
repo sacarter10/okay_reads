@@ -2,8 +2,7 @@
 require 'addressable/uri'
 require 'rest-client'
 
-SUBJECTS = ["science_fiction", "fantasy", "biography",
-  "classics", "historical_fiction", "mystery",
+SUBJECTS = ["science_fiction", "fantasy", "biography", "historical_fiction", "mystery",
   "poetry", "romance"]
 
 SUBJECTS.each do |subject|
@@ -11,7 +10,7 @@ SUBJECTS.each do |subject|
     :scheme => "http",
     :host => "openlibrary.org",
     :path => "/subjects/#{subject}.json",
-    :query_values => {:limit => 40}
+    :query_values => { :limit => 400 }
   ).to_s
 
   response = JSON.parse(RestClient.get(url))

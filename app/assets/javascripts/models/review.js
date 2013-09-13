@@ -18,5 +18,13 @@ Goodreadsclone.Models.Review = Backbone.Model.extend({
 		delete json.author;
 
 		return json;
+	},
+
+	url: function () {
+		if (this.id) {
+			return "/reviews/" + this.id;
+		} else {
+			return "/reviews"
+		}
 	}
 });

@@ -7,7 +7,7 @@ Goodreadsclone.Models.Book = Backbone.Model.extend({
 		}
 
 		if (data.review) {
-			var review = new Goodreadsclone.Models.BookFlag(data.review, { parse: true });
+			var review = new Goodreadsclone.Models.Review(data.review, { parse: true });
 			data.review = review;
 		}
 

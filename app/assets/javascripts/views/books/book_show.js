@@ -92,10 +92,9 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 		var currentReview =
 			this.model.get('reviews').findByUserId(Goodreadsclone.Store.currentUser.id);
 
-
 		var ratingView = new Goodreadsclone.Views.RatingShow({
 			collection: this.model.get('reviews'),
-			model: currentReview // null if current user hasn't rated book
+			model: currentReview
 		});
 		this.$el.find('#currentRating').html(ratingView.render().$el);
 

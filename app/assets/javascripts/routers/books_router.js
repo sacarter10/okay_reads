@@ -73,7 +73,6 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 	},
 
 	bookshelfShow: function (name) {
-		console.log('in bookshelf show');
 		var that = this;
 
 		var user = Goodreadsclone.Store.currentUser.fetch({

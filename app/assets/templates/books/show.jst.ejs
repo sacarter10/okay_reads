@@ -1,20 +1,21 @@
-<img src="http://covers.openlibrary.org/b/OLID/<%=book.get('open_library_id')%>-M.jpg">
-<h2><%= book.escape('title') %></h2>
-by <%= book.escape('author') %><br>
-Genre: <%= book.escape('genre') %><br>
+<div class="row">
+	<img src="http://covers.openlibrary.org/b/OLID/<%=book.get('open_library_id')%>-M.jpg">
+	<h2><%= book.escape('title') %></h2>
+	by <%= book.escape('author') %><br>
 
-Your rating:
-<div id="currentRating"></div>
-<div id="average-rating">
-  Average rating: <%= book.get('average_rating') %>
+	Your rating:
+	<div id="currentRating"></div>
+	<div id="average-rating">
+	  Average rating: <%= book.get('average_rating') %>
+	</div>
+
+	<button id="new-review-button" class="small button">Write a review</button>
+	<div id="new-review-form"></div>
+
+	<button id="want-to-read" class="small button">Want to read</button>
 </div>
 
-<button id="new-review-button" class="small button">Write a review</button>
-<div id="new-review-form"></div>
-
-<button id="want-to-read" class="small button">Want to read</button>
-
-<div id="reviews">
+<div id="reviews"class="row">
 
 </div>
 
