@@ -1,4 +1,4 @@
-<h3>Books Index</h3>
+<h3><%= header %></h3>
 
 <% books.each(function (book) { %>
   <a href = "#books/<%= book.escape('id')%>"><%= book.escape('title') %></a><br>

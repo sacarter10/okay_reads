@@ -35,7 +35,8 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 			data: { page: page },
 			success: function(coll, resp, options) {
 				var pageView = new Goodreadsclone.Views.BooksIndex({
-					collection: that.collection
+					collection: that.collection,
+					header: "Books"
 				});
 				that._swapView(pageView);
 			},
@@ -100,7 +101,8 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 			data: { page: page, genre: genre },
 			success: function(coll, resp, options) {
 				var pageView = new Goodreadsclone.Views.BooksIndex({
-					collection: that.collection
+					collection: that.collection,
+					header: genre
 				});
 				that._swapView(pageView);
 			},
