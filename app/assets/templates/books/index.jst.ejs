@@ -8,7 +8,7 @@
   <a href="<%=books.pagePath()%><%=books.prevPage()%>">&lt;</a>
 <% }; %>
 
-<% for (var i = 0; i < books.totalPages; i++) { %>
+<% for (var i = 1; i < books.totalPages; i++) { %>
   <a href="<%=books.pagePath() + i%>"><%= i %></a>
 <% }; %>
 
