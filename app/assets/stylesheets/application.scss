@@ -13,6 +13,14 @@
  */
 @import "foundation";
 
+#remove-book {
+	cursor: pointer;
+}
+
+.editable {
+	cursor: pointer;
+}
+
 #remove-book:hover {
 	color: red;
 }

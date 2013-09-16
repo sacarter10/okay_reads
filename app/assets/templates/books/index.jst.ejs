@@ -9,7 +9,7 @@
 <% }; %>
 
 <% for (var i = 0; i < books.totalPages; i++) { %>
-  <a href="<%=books.pagePath()%>/i"><%= i %></a>
+  <a href="<%=books.pagePath() + i%>"><%= i %></a>
 <% }; %>
 
 <% if (books.currentPage < books.totalPages) { %>
