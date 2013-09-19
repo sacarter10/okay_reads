@@ -30,6 +30,7 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 		var that = this;
 
 		this.collection.currentPage = page;
+		this.collection.currentGenre = undefined;
 
 		this.collection.fetch({
 			data: { page: page },

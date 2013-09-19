@@ -63,6 +63,8 @@ GEM
     ejs (1.1.1)
     erubis (2.7.0)
     execjs (2.0.1)
+    faraday (0.8.8)
+      multipart-post (~> 1.2.0)
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
@@ -77,11 +79,16 @@ GEM
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    koala (1.7.0rc1)
+      addressable
+      faraday
+      multi_json
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25)
     multi_json (1.7.9)
+    multipart-post (1.2.0)
     oj (2.1.4)
     pg (0.16.0)
     polyglot (0.3.3)
@@ -149,6 +156,7 @@ DEPENDENCIES
   figaro
   jquery-rails
   kaminari
+  koala (~> 1.7.0rc1)
   oj
   pg
   rabl

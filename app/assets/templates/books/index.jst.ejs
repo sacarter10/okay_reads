@@ -8,7 +8,11 @@
   <a href="<%=books.pagePath()%><%=books.prevPage()%>">&lt;</a>
 <% }; %>
 
+<<<<<<< HEAD
 <% for (var i = 1; i <= books.totalPages; i++) { %>
+=======
+<% for (var i = 1; i < books.totalPages; i++) { %>
+>>>>>>> 32e9b84cffd3f9bc4407859472b9c397ca082c60
   <a href="<%=books.pagePath() + i%>"><%= i %></a>
 <% }; %>
 
