@@ -1,1 +1,1 @@
-My final project for App Academy. A work in progress.
+Browse books, review books, manage your bookshelf. A Rails application using Backbone.
