@@ -2,7 +2,7 @@
 		<h5><%= review.escape('title')%></h5>
 		by <%= review.get('user').escape('username')%>
 		<span id="review-rating"></span>
-		<%= review.escape('body') %>
+		<%= markdown.toHTML(review.get('body')) %>
 	</div>
 
 	<% if (review.get('user').id === Goodreadsclone.Store.currentUser.id) { %>
