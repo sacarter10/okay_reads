@@ -30,8 +30,16 @@ class SessionsController < ApplicationController
   end
 
   def facebook_create
+    p "!!!!!!!!!!!!!!! here we are in facebook create"
+    p "!!!!!!!!! all good so far"
+
     @user = User.from_omniauth(env["omniauth.auth"])
+    p "did we find the user??????"
+    p "user is #{@user}"
+
     session[:token] = @user.reset_session_token!
+    p "we set the session token........."
+    p "and the session token is #{session[:token]}"
 
     redirect_to root_url
   end

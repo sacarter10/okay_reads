@@ -4,7 +4,7 @@ require 'rest-client'
 class User < ActiveRecord::Base
   include BCrypt
 
-  attr_accessible :username, :email, :password, :uid, :oauth_token, :oauth_expires_at
+  attr_accessible :username, :email, :password, :uid, :oauth_token, :oauth_expires_at, :provider
 
   validates :username, :email, :presence => true
 
