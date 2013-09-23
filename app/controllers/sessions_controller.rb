@@ -17,12 +17,8 @@ class SessionsController < ApplicationController
 
       render :new
     else
-      @user.reset_session_token!
-      session[:token] = @user.session_token
+      session[:token] = @user.reset_session_token!
 
-      p @user.session_token
-      p session[:token]
-      p current_user
       redirect_to root_url
     end
   end
@@ -31,5 +27,12 @@ class SessionsController < ApplicationController
     logout_user(current_user)
 
     redirect_to new_session_url
+  end
+
+  def facebook_create
+    @user = User.from_omniauth(env["omniauth.auth"])
+    session[:token] = @user.reset_session_token!
+
+    redirect_to root_url
   end
 end
