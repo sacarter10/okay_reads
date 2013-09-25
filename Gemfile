@@ -35,4 +35,5 @@ gem 'debugger'
 
 gem 'figaro'
 gem 'addressable'
+
 gem 'rest-client'

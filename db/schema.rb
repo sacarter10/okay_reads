@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130922204915) do
+ActiveRecord::Schema.define(:version => 20130925221840) do
 
   create_table "book_flags", :force => true do |t|
     t.integer  "user_id"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(:version => 20130922204915) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "book_flags", ["user_id", "book_id"], :name => "index_book_flags_on_user_id_and_book_id"
 
   create_table "books", :force => true do |t|
     t.string   "author"
@@ -39,6 +41,8 @@ ActiveRecord::Schema.define(:version => 20130922204915) do
     t.integer  "rating"
   end
 
+  add_index "reviews", ["user_id", "book_id"], :name => "index_reviews_on_user_id_and_book_id"
+
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "email"
@@ -51,5 +55,7 @@ ActiveRecord::Schema.define(:version => 20130922204915) do
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
   end
+
+  add_index "users", ["username"], :name => "index_users_on_username"
 
 end
