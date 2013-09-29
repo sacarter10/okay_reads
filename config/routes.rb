@@ -1,5 +1,5 @@
 Goodreadsclone::Application.routes.draw do
-	root :to => "root#root"
+  root :to => "root#root"
 
 	get 'auth/:provider/callback', :to => "sessions#facebook_create"
 	get 'auth/failure', :to => redirect('/')
