@@ -5,29 +5,23 @@
 		</li>
 		<li class="toggle-topbar menu-icon">
 			<a href="#"><span>Menu</span></a>
-    </li>
+		</li>
 	</ul>
 
 	<% if logged_in? %>
-		<section class="top-bar-section">
-			<ul class="right">
-				<li class="divider"></li>
-				<li class="has-form">
-					<form>
-						<div class="row collapse">
-							<div class="small-8 columns">
-								<input type="text" placeholder="Search by title">
-								<i class="fi-[heart]"></i>
-								<i class="fi-heart"></i>
-							</div>
-					</form>
-				</li>
-				<li class="divider"></li>
-				<li><a href="#">Browse books</a></li>
-				<li class="divider"></li>
-				<li><a href="#bookshelves">Bookshelves</a></li>
-				<li class="divider"></li>
-			</ul>
+	<section class="top-bar-section">
+		<ul class="right">
+			<li class="divider"></li>
+			<li><a href="#">Browse books</a></li>
+			<li class="divider"></li>
+			<li><a href="#bookshelves">Bookshelves</a></li>
+			<li class="divider"></li>
+			<li id="log-out">
+				<%= link_to "Log out #{current_user.username}", session_url, :method => :delete %>
+			</li>
+			<li class="divider"></li>
+		</ul>
+	</section>
 	<% end %>
-
+	
 </nav>
