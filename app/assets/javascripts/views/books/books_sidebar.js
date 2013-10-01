@@ -1,6 +1,6 @@
 Goodreadsclone.Views.BooksSidebar = Backbone.View.extend({
 
-  template: JST['books/sidebar'],
+  template: JST['navigation/sidebar'],
 
 	render: function () {
 		var that = this;

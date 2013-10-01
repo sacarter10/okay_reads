@@ -10,5 +10,4 @@ Goodreadsclone::Application.routes.draw do
   resources :books, :only => [:index, :show]
   resources :book_flags, :only => [:create, :destroy]
   resources :reviews, :only => [:create, :update, :destroy]
-  
 end
