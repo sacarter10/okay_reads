@@ -30,7 +30,6 @@ class SessionsController < ApplicationController
   end
 
   def facebook_create
-    p "IN FACEBOOK CREATE"
     @user = User.from_omniauth(env["omniauth.auth"])
 
     session[:token] = @user.reset_session_token!

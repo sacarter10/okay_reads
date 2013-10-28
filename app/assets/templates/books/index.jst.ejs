@@ -5,6 +5,7 @@
 <% }); %><br>
 
 current page: <%= books.currentPage %>
+arguments: <%= window.location.hash %>
 <% if (books.currentPage > 1) { %>
   <a href="<%=books.pagePath()%><%=books.prevPage()%>">&lt; prev</a>
 <% }; %>
