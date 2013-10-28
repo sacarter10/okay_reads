@@ -1,3 +1,5 @@
+// The BookFlag model marks whether a user has marked the book 
+// as one that they "Want to Read"
 Goodreadsclone.Models.BookFlag = Backbone.Model.extend({
 	parse: function (data) {
 		var book = new Goodreadsclone.Models.Book(data.book, {parse: true});

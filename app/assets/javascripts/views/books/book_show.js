@@ -62,6 +62,10 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 		}
 	},
 
+	initialize: function () {
+		this.listenTo(this.model, 'change', this.render);
+	},
+
 	newReview: function (event) {
 		event.preventDefault();
 
@@ -79,16 +83,12 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 		this.$el.find('#new-review-rating').html(ratingView.render().$el);
 	},
 
-	initialize: function () {
-		this.listenTo(this.model, 'change', this.render);
-	},
-
 	render: function () {
 		this.$el.html(this.template({
 			book: this.model
 		}));
 
-		// find in the current user's rating for this book	and fill in rating appropriately
+		// find the current user's rating for this book	and fill in rating appropriately
 		var currentReview =
 			this.model.get('reviews').findByUserId(Goodreadsclone.Store.currentUser.id);
 
@@ -102,7 +102,7 @@ Goodreadsclone.Views.BookShow = Backbone.View.extend({
 		var reviewsView = new Goodreadsclone.Views.ReviewsIndex({
 			collection: this.model.get('reviews')
 		});
-		this.$el.find('#reviews').html(reviewsView.render().$el);
+		this.$el.find('#reviews').append(reviewsView.render().$el);
 
 		// if this book is already on user's "Want to Read" shelf, disable buttons
 		if (this.model.get('to_read_flag')) {
