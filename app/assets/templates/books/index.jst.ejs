@@ -4,8 +4,6 @@
   <a href = "#books/<%= book.escape('id')%>"><%= book.escape('title') %></a><br>
 <% }); %><br>
 
-<% console.log(books.currentPage) %>
-<%= console.log(window.location) %>
 <% if (books.currentPage > 1) { %>
   <a href="<%=books.pagePath()%><%=books.prevPage()%>">&lt; prev</a>
 <% }; %>

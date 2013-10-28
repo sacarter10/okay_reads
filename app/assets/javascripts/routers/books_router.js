@@ -20,6 +20,11 @@ Goodreadsclone.Routers.Books = Backbone.Router.extend({
 			genres: this.genres
 		}));
 
+		// account for facebook appending "_=_" to redirect url
+		if (page == "_=_") {
+			page = undefined;
+		}
+
 		var page = page || 1;
 		var that = this;
 
