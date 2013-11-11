@@ -9,7 +9,7 @@ Goodreadsclone.Views.ReviewsIndex = Backbone.View.extend({
 
 	render: function () {
 		var that = this;
-		this.$el.html(this.template({ reviews: this.collection }));
+		this.$el.html(this.template());
 
 		this.collection.each( function (review) {
 			if (review.get('title')) {
